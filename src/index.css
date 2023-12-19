@@ -2,6 +2,73 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'sans';
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: black;
+  border-radius: 15px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@font-face {
+  font-family: 'sans';
+  src: url('./fonts/px_grotesk_light.ttf');
+}
+
+select {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+input[type='range'] {
+  appearance: none;
+  height: 1px;
+  outline: none;
+  cursor: pointer;
+  background: black;
+  width: 75px;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: black;
+  border-radius: 30px;
+  outline: none;
+}
+
+input[type='color'] {
+  -webkit-appearance: none;
+  border: none;
+  width: 15px;
+  height: 15px;
+  background: none;
+  cursor: pointer;
+}
+
+input[type='color']:disabled {
+  cursor: default;
+}
+
+input[type='color']::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type='color']::-webkit-color-swatch {
+  border-radius: 50%;
+  border: solid 0.75px black;
 }
 
 .cell {
