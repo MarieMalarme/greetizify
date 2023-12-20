@@ -64,9 +64,10 @@ const Home = () => {
           <Label>Pattern</Label>
           <Select
             value={params.grid}
-            onChange={(event) =>
+            onChange={(event) => {
+              set_search_params('grid', event.target.value)
               set_params({ ...params, grid: event.target.value })
-            }
+            }}
           >
             {Object.keys(grids).map((grid_name) => (
               <option key={grid_name} value={grid_name}>
@@ -86,9 +87,10 @@ const Home = () => {
               step="0.1"
               type="range"
               value={Number(params.step)}
-              onChange={(event) =>
+              onChange={(event) => {
+                set_search_params('step', event.target.value)
                 set_params({ ...params, step: Number(event.target.value) })
-              }
+              }}
             ></Input>
           </Setting>
           <Setting>
@@ -99,9 +101,10 @@ const Home = () => {
               step="1"
               type="range"
               value={Number(params.delay)}
-              onChange={(event) =>
+              onChange={(event) => {
+                set_search_params('delay', event.target.value)
                 set_params({ ...params, delay: Number(event.target.value) })
-              }
+              }}
             />
           </Setting>
           <Setting>
@@ -112,12 +115,13 @@ const Home = () => {
               step="0.5"
               type="range"
               value={params.multiplier}
-              onChange={(event) =>
+              onChange={(event) => {
+                set_search_params('multiplier', event.target.value)
                 set_params({
                   ...params,
                   multiplier: Number(event.target.value),
                 })
-              }
+              }}
             />
           </Setting>
           <Setting>
@@ -128,12 +132,13 @@ const Home = () => {
               step="1"
               type="range"
               value={params.max_percentage_pattern}
-              onChange={(event) =>
+              onChange={(event) => {
+                set_search_params('max_percentage_pattern', event.target.value)
                 set_params({
                   ...params,
                   max_percentage_pattern: Number(event.target.value),
                 })
-              }
+              }}
             />
           </Setting>
           <Setting>
@@ -144,12 +149,13 @@ const Home = () => {
               step="1"
               type="range"
               value={params.max_percentage_basic}
-              onChange={(event) =>
+              onChange={(event) => {
+                set_search_params('max_percentage_basic', event.target.value)
                 set_params({
                   ...params,
                   max_percentage_basic: Number(event.target.value),
                 })
-              }
+              }}
             />
           </Setting>
         </Category>
@@ -159,7 +165,7 @@ const Home = () => {
           {Object.entries(params)
             .filter(
               ([key, value]) =>
-                typeof value === 'string' && value.startsWith('#'),
+                typeof value === 'string' && value.startsWith('#'), // get params with hexadecimal values
             )
             .map(([label, value]) => (
               <Setting key={label}>
@@ -167,9 +173,10 @@ const Home = () => {
                 <Input
                   type="color"
                   value={value}
-                  onChange={(event) =>
+                  onChange={(event) => {
+                    set_search_params(label, event.target.value)
                     set_params({ ...params, [label]: event.target.value })
-                  }
+                  }}
                 />
               </Setting>
             ))}
@@ -181,9 +188,10 @@ const Home = () => {
             <Label>Gradient type</Label>
             <Select
               value={params.gradient_type}
-              onChange={(event) =>
+              onChange={(event) => {
+                set_search_params('gradient_type', event.target.value)
                 set_params({ ...params, gradient_type: event.target.value })
-              }
+              }}
             >
               <option value="linear">Linear</option>
               <option value="radial">Radial</option>
@@ -202,9 +210,10 @@ const Home = () => {
                 step="1"
                 type="range"
                 value={value}
-                onChange={(event) =>
+                onChange={(event) => {
+                  set_search_params(label, event.target.value)
                   set_params({ ...params, [label]: Number(event.target.value) })
-                }
+                }}
               />
             </Setting>
           ))}
@@ -213,13 +222,19 @@ const Home = () => {
             <Switch>
               <Button
                 o30={!params.square_mode}
-                onClick={() => set_params({ ...params, square_mode: true })}
+                onClick={() => {
+                  set_search_params('square_mode', true)
+                  set_params({ ...params, square_mode: true })
+                }}
               >
                 ON
               </Button>
               <Button
                 o30={params.square_mode}
-                onClick={() => set_params({ ...params, square_mode: false })}
+                onClick={() => {
+                  set_search_params('square_mode', false)
+                  set_params({ ...params, square_mode: false })
+                }}
               >
                 OFF
               </Button>
