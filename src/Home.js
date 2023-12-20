@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Component } from './flags'
+import { Component, Div, Span } from './flags'
 import { grids } from './grids'
 
 const capitalize = (string) =>
@@ -297,9 +297,36 @@ const Home = () => {
           }),
         )}
       </Grid>
+
+      <Credits style={{ backdropFilter: 'blur(5px)' }}>
+        <Repository
+          id="repository-link"
+          href="https://github.com/MarieMalarme/greetizify"
+          target="_blank"
+        >
+          {Arrow}
+          <Span ml7>Code repository</Span>
+        </Repository>
+        <Div>
+          ©{' '}
+          <Link href="https://marie.studiodev.xyz/" target="_blank">
+            Marie Malarme
+          </Link>{' '}
+          2023
+        </Div>
+      </Credits>
     </Page>
   )
 }
+
+const Arrow = (
+  <svg width={20} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130">
+    <g fill="none" stroke="black" strokeWidth={8}>
+      <polyline points="72.85,17.6 120.5,65.25 72.85,112.9" />
+      <line x1="5.5" y1="65.25" x2="119.84" y2="65.25" />
+    </g>
+  </svg>
+)
 
 const Page = Component.flex.h100vh.w100p.ai_center.jc_center.div()
 const Settings = Component.ba.absolute.t10.l10.pa20.b_rad8.max_h95p.div()
@@ -316,5 +343,11 @@ const Cell = Component.w100p.flex.ai_center.jc_center.article()
 const Dot = Component.min_w5.min_h5.w30p.h30p.div()
 const PlayButton =
   Component.b_rad25.bg_none.ba.pv10.ph20.fs16.w100p.mt30.c_pointer.button()
+const Credits =
+  Component.b_rad8.flex.flex_column.absolute.b15.r10.ph20.pv15.fs18.header()
+const Link =
+  Component.bb.black.b_black.text_dec_none.hover_electric5.hover_b_electric5.a()
+const Repository =
+  Component.mb10.black.hover_b_electric5.hover_electric5.text_dec_none.flex.ai_center.ba.b_rad25.pv5.ph15.a()
 
 export default Home

@@ -74,3 +74,7 @@ input[type='color']::-webkit-color-swatch {
 .cell {
   aspect-ratio: 1 / 1;
 }
+
+#repository-link:hover svg g {
+  stroke: var(--electric5);
+}
